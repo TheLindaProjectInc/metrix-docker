@@ -1,5 +1,5 @@
 FROM ubuntu
-MAINTAINER pandazwb
+LABEL authors="nibbles83"
 
 RUN set -ex \
     && apt-get update \
@@ -12,7 +12,7 @@ RUN set -ex \
     && METRIX_URL=`cat /tmp/metrix_url` \
     && METRIX_DIST=$(basename $METRIX_URL) \
     && wget -O $METRIX_DIST $METRIX_URL \
-	&& tar -xzvf $METRIX_DIST -C /usr/local --strip-components=1 \
+	&& tar -xzvf $METRIX_DIST -C /usr/local/bin \
 	&& rm /tmp/metrix* \
 	&& rm -rf /var/lib/apt/lists/*
 
