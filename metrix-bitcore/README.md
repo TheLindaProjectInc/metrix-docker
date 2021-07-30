@@ -53,7 +53,7 @@ $ docker run -d --rm --name metrix_node \
              -v ${PWD}/metrix.conf:/root/.metrixcoin/metrix.conf \
              -v /data/metrix-data/:/root/.metrixcoin/ \
              -p 127.0.0.1:33831:33831 \
-             metrix/metrix-bitcore:latest metrixd
+             metrixcoin/metrix-bitcore:latest metrixd
 
 ## check docker processed
 $ docker ps
@@ -62,7 +62,7 @@ $ docker ps
 $ docker run -i --network container:metrix_node \
              -v ${PWD}/metrix.conf:/root/.metrixcoin/metrix.conf \
              -v /data/metrix-data/:/root/.metrixcoin/ \
-             metrix/metrix-bitcore:latest metrix-cli stop
+             metrixcoin/metrix-bitcore:latest metrix-cli stop
 ```
 
 `${PWD}/metrix.conf` will be used, and blockchain data saved under /data/metrix-data/
@@ -75,7 +75,7 @@ Use following docker command to interact with your metrix node with `metrix-cli`
 $ docker run -i --network container:metrix_node \
              -v ${PWD}/metrix.conf:/root/.metrixcoin/metrix.conf \
              -v /data/metrix-data/:/root/.metrixcoin/ \
-             metrix/metrix-bitcore:latest metrix-cli getblockchaininfo
+             metrixcoin/metrix-bitcore:latest metrix-cli getblockchaininfo
 ```
 
 For more metrix-cli commands, use:
@@ -84,7 +84,7 @@ For more metrix-cli commands, use:
 $ docker run -i --network container:metrix_node \
              -v ${PWD}/metrix.conf:/root/.metrixcoin/metrix.conf \
              -v /data/metrix-data/:/root/.metrixcoin/ \
-             metrix/metrix-bitcore:latest metrix-cli help
+             metrixcoin/metrix-bitcore:latest metrix-cli help
 ```
 
 ## RPC from outside container
@@ -95,3 +95,9 @@ While the metrix-bitcore node container is running, you can do RPC outside the c
 curl -i --user metrix:metrixtest --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockchaininfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:33831/
 ```
 
+Or for Windows replace the single quotes and escape quotes inside.
+
+```
+curl -i --user metrix:metrixtest --data-binary "{\"jsonrpc\":\"1.0\", \"id\":\"curltest\", \"method\":\"getblockchaininfo\", \"params\":[] }" -H "content-type:text/plain;" http://127.0.0.1:33831/
+
+```

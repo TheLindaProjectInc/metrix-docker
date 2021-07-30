@@ -13,10 +13,10 @@ $ docker pull metrixcoin/metrix
 ### Or, build metrix image with provided Dockerfile
 
 ```
-$docker build --rm -t metrix/metrix .
+$ docker build --rm -t metrixcoin/metrix .
 ```
 
-For historical versions, please visit [docker hub](https://hub.docker.com/r/metrix/metrix/)
+For historical versions, please visit [docker hub](https://hub.docker.com/r/metrixcoin/metrix/)
 
 ## Prepare data path and metrix.conf
 
@@ -49,7 +49,8 @@ To launch metrix node:
 $ docker run -d --rm --name metrix_node \
              -v ${PWD}/metrix.conf:/root/.metrixcoin/metrix.conf \
              -v /data/metrix-data/:/root/.metrixcoin/ \
-             metrix/metrix metrixd
+             -p 127.0.0.1:33831:33831 \
+             metrixcoin/metrix metrixd
 
 ## check docker processed
 $ docker ps
@@ -59,7 +60,7 @@ $ docker run -i --network container:metrix_node \
              -v ${PWD}/metrix.conf:/root/.metrixcoin/metrix.conf \
              -v /data/metrix-data/:/root/.metrixcoin/ \
              -p 127.0.0.1:33831:33831 \
-             metrix/metrix metrix-cli stop
+             metrixcoin/metrix metrix-cli stop
 ```
 
 `${PWD}/metrix.conf` will be used, and blockchain data saved under /data/metrix-data/
@@ -92,3 +93,10 @@ While the metrix node container is running, you can do RPC outside the container
 curl -i --user metrix:metrixtest --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockchaininfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:33831/
 ```
 
+
+Or for Windows replace the single quotes and escape quotes inside.
+
+```
+curl -i --user metrix:metrixtest --data-binary "{\"jsonrpc\":\"1.0\", \"id\":\"curltest\", \"method\":\"getblockchaininfo\", \"params\":[] }" -H "content-type:text/plain;" http://127.0.0.1:33831/
+
+```

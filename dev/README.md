@@ -17,7 +17,7 @@ $ docker pull metrixcoin/metrix:dev
 This is recommended since it ensures build the latest dev version.
 
 ```
-$docker build --rm -t metrix/metrix:dev .
+$docker build --rm -t metrixcoin/metrix:dev .
 ```
 
 ## Prepare data path and metrix.conf
@@ -44,13 +44,13 @@ To launch metrix node:
 
 ```
 ## to launch metrixd
-$ docker run -d --rm --name metrix_node -v ${PWD}/metrix.conf:/root/.metrixcoin/metrix.conf -v /data/metrix-data/:/root/.metrixcoin/ metrix/metrix:dev metrixd
+$ docker run -d --rm --name metrix_node -v ${PWD}/metrix.conf:/root/.metrixcoin/metrix.conf -v /data/metrix-data/:/root/.metrixcoin/ metrixcoin/metrix:dev metrixd
 
 ## check docker processed
 $ docker ps
 
 ## to stop metrixd
-$ docker run -i --network container:metrix_node -v ${PWD}/metrix.conf:/root/.metrixcoin/metrix.conf -v /data/metrix-data/:/root/.metrixcoin/ metrix/metrix:dev metrix-cli stop
+$ docker run -i --network container:metrix_node -v ${PWD}/metrix.conf:/root/.metrixcoin/metrix.conf -v /data/metrix-data/:/root/.metrixcoin/ metrixcoin/metrix:dev metrix-cli stop
 ```
 
 `${PWD}/metrix.conf` will be used, and blockchain data saved under /data/metrix-data/
@@ -60,12 +60,12 @@ $ docker run -i --network container:metrix_node -v ${PWD}/metrix.conf:/root/.met
 Use following docker command to interact with your metrix node with `metrix-cli`:
 
 ```
-$ docker run -i --network container:metrix_node -v ${PWD}/metrix.conf:/root/.metrixcoin/metrix.conf -v /data/metrix-data/:/root/.metrixcoin/ metrix/metrix:dev metrix-cli getblockchaininfo
+$ docker run -i --network container:metrix_node -v ${PWD}/metrix.conf:/root/.metrixcoin/metrix.conf -v /data/metrix-data/:/root/.metrixcoin/ metrixcoin/metrix:dev metrix-cli getblockchaininfo
 ```
 
 For more metrix-cli commands, use:
 
 ```
-$ docker run -i --network container:metrix_node -v ${PWD}/metrix.conf:/root/.metrixcoin/metrix.conf -v /data/metrix-data/:/root/.metrixcoin/ metrix/metrix:dev metrix-cli help
+$ docker run -i --network container:metrix_node -v ${PWD}/metrix.conf:/root/.metrixcoin/metrix.conf -v /data/metrix-data/:/root/.metrixcoin/ metrixcoin/metrix:dev metrix-cli help
 ```
 

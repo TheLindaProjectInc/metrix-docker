@@ -1,5 +1,5 @@
 FROM ubuntu
-MAINTAINER pandazwb
+LABEL authors="nibbles83"
 
 #set me to whatever you need to test
 ENV BRANCH master

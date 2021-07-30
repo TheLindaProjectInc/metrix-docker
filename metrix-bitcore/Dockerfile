@@ -1,5 +1,5 @@
 FROM ubuntu
-MAINTAINER pandazwb
+LABEL authors="nibbles83"
 
 RUN set -ex \
     && apt-get update \

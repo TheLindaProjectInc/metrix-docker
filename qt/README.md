@@ -50,7 +50,8 @@ $ docker run -it --rm \
              -v /tmp/.X11-unix:/tmp/.X11-unix \
              -v ${PWD}/metrix.conf:/root/.metrixcoin/metrix.conf \
              -v /data/metrix-data/:/root/.metrixcoin/ \
-             -e DISPLAY  metrix/metrix-qt
+             -p 127.0.0.1:33831:33831 \
+             -e DISPLAY  metrixcoin/metrix-qt
 ```
 
 For Mac:
